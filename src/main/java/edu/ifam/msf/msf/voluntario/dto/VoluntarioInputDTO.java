@@ -38,12 +38,6 @@ public class VoluntarioInputDTO {
     @NotNull(message = "O ID da situação do voluntário é obrigatório")
     private Long situacaoVoluntario;
 
-//    @NotBlank(message = "A cidade é obrigatória")
-//    private String cidade;
-//
-//    @NotBlank(message = "A situação do voluntário é obrigatória")
-//    private String situacaoVoluntario;
-
     // Constructor
 
     public VoluntarioInputDTO() {
@@ -107,58 +101,8 @@ public class VoluntarioInputDTO {
 
     public void setSituacaoVoluntario(Long situacaoVoluntario) { this.situacaoVoluntario = situacaoVoluntario; }
 
-//    public String getCidade() {
-//        return cidade;
-//    }
-//
-//    public void setCidade(String cidade) {
-//        this.cidade = cidade;
-//    }
-//
-//    public String getSituacaoVoluntario() {
-//        return situacaoVoluntario;
-//    }
-//
-//    public void setSituacaoVoluntario(String situacaoVoluntario) {
-//        this.situacaoVoluntario = situacaoVoluntario;
-//    }
-
-//    // Método para construir o Voluntario
-//    public Voluntario build(CidadeRepository cidadeRepository, SituacaoVoluntarioRepository situacaoVoluntarioRepository) {
-//        Voluntario voluntario = new Voluntario();
-//
-//        voluntario.setPassaporte(this.passaporte);
-//        voluntario.setNome(this.nome);
-//        voluntario.setIdade(this.idade);
-//        voluntario.setTelefone(this.telefone);
-//        voluntario.setEmail(this.email);
-//        voluntario.setTipoSanguineo(this.tipoSanguineo);
-//
-//        // Buscar a Cidade
-//        try {
-//            voluntario.setCidade(
-//                    cidadeRepository.findByNome(this.cidade)
-//                            .orElseThrow(() -> new IllegalArgumentException("Cidade não encontrada: " + this.cidade))
-//            );
-//        } catch (IllegalArgumentException e) {
-//            throw new IllegalStateException("Falha ao atribuir a cidade: " + e.getMessage(), e);
-//        }
-//
-//        // Buscar a Situação do Voluntário
-//        try {
-//            voluntario.setSituacaoVoluntario(
-//                    situacaoVoluntarioRepository.findBySituacao(this.situacaoVoluntario)
-//                            .orElseThrow(() -> new IllegalArgumentException("Situação do Voluntário não encontrada: " + this.situacaoVoluntario))
-//            );
-//        } catch (IllegalArgumentException e) {
-//            throw new IllegalStateException("Falha ao atribuir a situação do voluntário: " + e.getMessage(), e);
-//        }
-//
-//        return voluntario;
-//    }
-
-    // Implementação para construir o Voluntário com base nos novos IDs
     public Voluntario build(CidadeRepository cidadeRepository, SituacaoVoluntarioRepository situacaoVoluntarioRepository) {
+
         // Busca a Cidade pelo ID
         Cidade cidade = cidadeRepository.findById(this.cidade)
                 .orElseThrow(() -> new RuntimeException("Cidade com ID " + this.cidade + " não encontrada."));

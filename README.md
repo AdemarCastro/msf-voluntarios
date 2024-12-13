@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Voluntários da MSF (SGV-MSF)
+# Sistema de Gerenciamento de Voluntários da MSF
 
 ## Descrição
 O **Sistema de Gerenciamento de Voluntários da MSF (SGV-MSF)** é uma aplicação desenvolvida para atender às necessidades de gerenciamento de voluntários da organização **Médicos Sem Fronteiras (MSF)**. A solução permite o cadastro, listagem, consulta e exclusão de voluntários interessados em participar de missões médicas internacionais.
@@ -126,8 +126,8 @@ Cadastra um novo voluntário no sistema.
   "telefone": "(92) 99999-9999",
   "email": "joao.silva@email.com",
   "tipoSanguineo": "O+",
-  "cidade": "Manaus",
-  "situacaoVoluntario": "ÓTIMO"
+  "cidade": "3",
+  "situacaoVoluntario": "3"
 }
 ```
 
@@ -173,12 +173,12 @@ Atualiza um voluntário existente.
 {
   "passaporte": "12345678",
   "nome": "João Silva Atualizado",
-  "idade": 36,
+  "idade": "36",
   "telefone": "(92) 99999-9999",
   "email": "joao.silva@email.com",
   "tipoSanguineo": "B+",
-  "cidade": "Manaus",
-  "situacaoVoluntario": "RUIM"
+  "cidade": "3",
+  "situacaoVoluntario": "1"
 }
 ```
 
@@ -189,7 +189,7 @@ Atualiza um voluntário existente.
   "id": 1,
   "passaporte": "12345678",
   "nome": "João Silva Atualizado",
-  "idade": 36,
+  "idade": "36",
   "telefone": "(92) 99999-9999",
   "email": "joao.silva@email.com",
   "tipoSanguineo": "B+",
@@ -222,7 +222,7 @@ Retorna a lista de todos os voluntários cadastrados.
     "id": 1,
     "passaporte": "12345678",
     "nome": "João Silva Atualizado",
-    "idade": 36,
+    "idade": "36",
     "telefone": "(92) 99999-9999",
     "email": "joao.silva@email.com",
     "tipoSanguineo": "B+",
@@ -233,7 +233,7 @@ Retorna a lista de todos os voluntários cadastrados.
     "id": 2,
     "passaporte": "98765432",
     "nome": "Maria Souza",
-    "idade": 28,
+    "idade": "28",
     "telefone": "(92) 98888-8888",
     "email": "maria.souza@email.com",
     "tipoSanguineo": "A-",
@@ -262,7 +262,7 @@ Busca um voluntário com o `id` especificado.
   "id": 1,
   "passaporte": "12345678",
   "nome": "João Silva Atualizado",
-  "idade": 36,
+  "idade": "36",
   "telefone": "(92) 99999-9999",
   "email": "joao.silva@email.com",
   "tipoSanguineo": "B+",
@@ -316,24 +316,38 @@ Aqui está o formato completo esperado na resposta de endpoints que retornam os 
   "id": 1,
   "passaporte": "12345678",
   "nome": "João Silva",
-  "idade": 35,
+  "idade": "35",
   "telefone": "(92) 99999-9999",
   "email": "joao.silva@email.com",
   "tipoSanguineo": "O+",
-  "cidade": "Manaus",
-  "situacaoVoluntario": "ÓTIMO"
+  "cidade": "3",
+  "situacaoVoluntario": "3"
 }
 ```
 
 ---
 
-## **7. Possíveis Valores para `situacaoVoluntario`**
+## **7. Possíveis Valores para `cidade` e `situacaoVoluntario`**
+
+### **Cidades**
+
+| Valor (Enum) | Descrição         |
+|--------------|-------------------|
+| `1`          | São Paulo         |
+| `2`          | Rio de Janeiro    |
+| `3`          | Manaus            |
+| `4`          | Nova York         |
+| `5`          | Toronto           |
+| `6`          | Berlim            |
+| `7`          | Tóquio            |
+
+### **Situação do Voluntário**
 
 | Valor (Enum) | Descrição                         |
 |--------------|-----------------------------------|
-| `RUIM`       | Voluntário com saúde pessíma      |
-| `BOM`        | Voluntário com saúde satisfatória |
-| `ÓTIMO`      | Voluntário com saúde excelente    |
+| `1`          | RUIM - Voluntário com saúde péssima |
+| `2`          | BOM - Voluntário com saúde satisfatória |
+| `3`          | ÓTIMO - Voluntário com saúde excelente |
 
 ---
 

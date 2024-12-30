@@ -27,6 +27,7 @@ O **Sistema de Gerenciamento de Voluntários da MSF (SGV-MSF)** é uma aplicaç�
 - **Spring Data JPA**
 - **MySQL** como banco de dados relacional
 - **Jakarta EE** com `jakarta.` imports
+- **Swagger/OpenAPI** para documentação e testes interativos da API
 
 ## Funcionalidades
 - **Cadastro de Voluntários**: Permite adicionar novos voluntários ao sistema, verificando os critérios obrigatórios.
@@ -39,6 +40,7 @@ O projeto segue uma arquitetura baseada em camadas:
 - **Model**: Contém as entidades de domínio, como `Voluntário`, `Cidade`, `País`, e `SituaçãoSaude`.
 - **Repository**: Define os repositórios utilizando Spring Data JPA para interação com o banco de dados.
 - **Service**: Implementa as regras de negócio para validação e manipulação dos dados.
+- **Swagger**: 
 - **Controller**: Exposta como API REST para manipulação de voluntários.
 - **DTO**: Utilizado para transferência de dados entre a camada de apresentação e a lógica de negócio.
 
@@ -69,6 +71,9 @@ src/main/java
     │
     ├── Pais
     │   ├── Pais.java                        # Classe model de país
+    │
+    ├── swagger
+    │   └── SwaggerConfig.java               # Configuração do Swagger para a API
 ```
 
 ## Instalação e Configuração
@@ -103,6 +108,29 @@ Siga os passos abaixo para instalar e configurar o projeto:
    ```
    http://localhost:8080/api/voluntario
    ```
+
+## **Swagger UI**
+
+Para facilitar a visualização e testes das APIs, o Swagger UI está configurado no projeto.
+Acesse a interface gráfica do Swagger no seguinte endereço após rodar o projeto:
+
+---
+
+```
+http://localhost:8080/swagger-ui.html
+```
+
+*A seguir estão imagens ilustrativas da interface do Swagger em execução:*
+
+## **1. Criar um Novo Voluntário**
+
+## **2. Atualizar um Voluntário**
+
+## **3. Listar Voluntários**
+
+## **4. Buscar Voluntário por ID**
+
+## **5. Deletar um Voluntário**
 
 ## **Endpoints da API**
 

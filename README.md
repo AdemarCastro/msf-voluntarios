@@ -40,7 +40,7 @@ O projeto segue uma arquitetura baseada em camadas:
 - **Model**: Contém as entidades de domínio, como `Voluntário`, `Cidade`, `País`, e `SituaçãoSaude`.
 - **Repository**: Define os repositórios utilizando Spring Data JPA para interação com o banco de dados.
 - **Service**: Implementa as regras de negócio para validação e manipulação dos dados.
-- **Swagger**: 
+- **Swagger**: Configuração para documentação da API.
 - **Controller**: Exposta como API REST para manipulação de voluntários.
 - **DTO**: Utilizado para transferência de dados entre a camada de apresentação e a lógica de negócio.
 
@@ -124,13 +124,23 @@ http://localhost:8080/swagger-ui.html
 
 ## **1. Criar um Novo Voluntário**
 
+![criar_voluntario.png](assets/criar_voluntario.png)
+
 ## **2. Atualizar um Voluntário**
+
+![atualizar_voluntario.png](assets/atualizar_voluntario.png)
 
 ## **3. Listar Voluntários**
 
+![listar_voluntarios.png](assets/listar_voluntarios.png)
+
 ## **4. Buscar Voluntário por ID**
 
+![buscar_voluntarios_pelo_id.png](assets/buscar_voluntarios_pelo_id.png)
+
 ## **5. Deletar um Voluntário**
+
+![deletar_voluntario.png](assets/deletar_voluntario.png)
 
 ## **Endpoints da API**
 

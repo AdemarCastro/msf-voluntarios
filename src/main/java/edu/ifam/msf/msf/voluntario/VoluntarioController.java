@@ -2,6 +2,8 @@ package edu.ifam.msf.msf.voluntario;
 
 import edu.ifam.msf.msf.voluntario.dto.VoluntarioInputDTO;
 import edu.ifam.msf.msf.voluntario.dto.VoluntarioOutputDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,15 +16,17 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/voluntario")
+@Tag(name = "Voluntarios", description = "APIs para gerenciamento de voluntários")
 public class VoluntarioController {
 
     @Autowired
     private VoluntarioService voluntarioService;
 
-    /**
-     * Lista todos os voluntários.
-     */
     @GetMapping
+    @Operation(
+            summary = "Listar todos os voluntários",
+            description = "Retorna uma lista de todas as pessoas registradas como voluntários."
+    )
     public ResponseEntity<List<VoluntarioOutputDTO>> list() {
         try {
             List<VoluntarioOutputDTO> voluntariosDTO = voluntarioService.list();
@@ -36,6 +40,10 @@ public class VoluntarioController {
      * Cria um novo voluntário.
      */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(
+            summary = "Criar novo voluntário",
+            description = "Registra um novo voluntário no sistema. O corpo da requisição deve conter os dados obrigatórios."
+    )
     public ResponseEntity<VoluntarioOutputDTO> create(@Valid @RequestBody VoluntarioInputDTO voluntarioInputDTO) {
         try {
             VoluntarioOutputDTO voluntarioOutputDTO = voluntarioService.create(voluntarioInputDTO);
@@ -45,10 +53,11 @@ public class VoluntarioController {
         }
     }
 
-    /**
-     * Atualiza os dados de um voluntário existente.
-     */
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(
+            summary = "Atualizar dados de um voluntário",
+            description = "Atualiza os dados de um voluntário existente identificado pelo ID."
+    )
     public ResponseEntity<VoluntarioOutputDTO> update(@Valid @RequestBody VoluntarioInputDTO voluntarioInputDTO, @PathVariable Long id) {
         try {
             VoluntarioOutputDTO voluntarioAtualizado = voluntarioService.update(voluntarioInputDTO, id);
@@ -60,10 +69,11 @@ public class VoluntarioController {
         }
     }
 
-    /**
-     * Recupera um voluntário pelo ID.
-     */
     @GetMapping("/{id}")
+    @Operation(
+            summary = "Buscar voluntário por ID",
+            description = "Recupera os dados de um voluntário a partir do seu identificador único."
+    )
     public ResponseEntity<VoluntarioOutputDTO> getById(@PathVariable Long id) {
         try {
             VoluntarioOutputDTO voluntario = voluntarioService.getById(id);
@@ -73,10 +83,11 @@ public class VoluntarioController {
         }
     }
 
-    /**
-     * Remove um voluntário pelo ID.
-     */
     @DeleteMapping("/{id}")
+    @Operation(
+            summary = "Remover voluntário por ID",
+            description = "Exclui os dados de um voluntário a partir do seu identificador único."
+    )
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         try {
             voluntarioService.delete(id);
@@ -96,15 +107,5 @@ public class VoluntarioController {
                 errors.put(error.getField(), error.getDefaultMessage())
         );
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-    }
-
-    /**
-     * Trata exceções genéricas, retornando uma mensagem customizada.
-     */
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
-        Map<String, String> response = new HashMap<>();
-        response.put("erro", ex.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

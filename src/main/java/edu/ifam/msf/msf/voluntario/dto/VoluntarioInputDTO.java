@@ -5,6 +5,7 @@ import edu.ifam.msf.msf.situacaoVoluntario.SituacaoVoluntario;
 import edu.ifam.msf.msf.voluntario.Voluntario;
 import edu.ifam.msf.msf.cidade.CidadeRepository;
 import edu.ifam.msf.msf.situacaoVoluntario.SituacaoVoluntarioRepository;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,29 +13,37 @@ import jakarta.validation.constraints.Pattern;
 
 public class VoluntarioInputDTO {
 
+    @Schema(description = "Passaporte do voluntário", example = "AB1234567")
     @NotBlank(message = "O passaporte é obrigatório")
     private String passaporte;
 
+    @Schema(description = "Nome do voluntário", example = "João Silva")
     @NotBlank(message = "O nome é obrigatório")
     private String nome;
 
+    @Schema(description = "Idade do voluntário em anos", example = "25")
     @NotBlank(message = "A idade é obrigatória")
     @Pattern(regexp = "\\d+", message = "A idade deve ser um número válido.")
     private String idade;
 
+    @Schema(description = "Telefone para contato", example = "+55 (92) 91234-5678")
     @NotBlank(message = "O telefone é obrigatório")
     private String telefone;
 
+    @Schema(description = "E-mail válido do voluntário", example = "joao.silva@example.com")
     @NotBlank(message = "O email é obrigatório")
     @Email(message = "O email deve ser válido")
     private String email;
 
+    @Schema(description = "Tipo sanguíneo do voluntário", example = "O+")
     @NotBlank(message = "O tipo sanguíneo é obrigatório")
     private String tipoSanguineo;
 
+    @Schema(description = "ID da cidade onde reside", example = "1")
     @NotNull(message = "O ID da cidade é obrigatório")
     private Long cidade;
 
+    @Schema(description = "ID da situação do voluntário", example = "2")
     @NotNull(message = "O ID da situação do voluntário é obrigatório")
     private Long situacaoVoluntario;
 

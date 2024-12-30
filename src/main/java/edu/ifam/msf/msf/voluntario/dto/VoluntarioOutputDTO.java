@@ -2,17 +2,35 @@ package edu.ifam.msf.msf.voluntario.dto;
 
 import edu.ifam.msf.msf.situacaoVoluntario.enums.SituacaoVoluntarioEnum;
 import edu.ifam.msf.msf.voluntario.Voluntario;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class VoluntarioOutputDTO {
 
+    @Schema(description = "ID do voluntário", example = "101")
     private Long id;
+
+    @Schema(description = "Passaporte do voluntário", example = "AB1234567")
     private String passaporte;
+
+    @Schema(description = "Nome do voluntário", example = "João Silva")
     private String nome;
+
+    @Schema(description = "Idade do voluntário", example = "25")
     private String idade;
+
+    @Schema(description = "Telefone de contato", example = "+55 (92) 91234-5678")
     private String telefone;
+
+    @Schema(description = "E-mail do voluntário", example = "joao.silva@example.com")
     private String email;
+
+    @Schema(description = "Tipo sanguíneo do voluntário", example = "O+")
     private String tipoSanguineo;
+
+    @Schema(description = "Nome da cidade de residência", example = "Manaus")
     private String cidade;
+
+    @Schema(description = "Situação atual do voluntário", example = "BOM")
     private SituacaoVoluntarioEnum situacaoVoluntario;
 
     // Constructor
